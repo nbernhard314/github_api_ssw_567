@@ -2,6 +2,8 @@ import requests as r
 import json
 
 def findGithubInfo(username):
+    if not isinstance(username, str):
+        return "Invalid input. Please enter a string."
     ret = r.get("https://api.github.com/users/"+username+"/repos")
     if not ret.ok:
         return "Invalid username entered. Please re-run the program and try again."
@@ -13,11 +15,9 @@ def findGithubInfo(username):
     output = ""
     for repo in repoList:
         comRes = r.get("https://api.github.com/repos/"+username+"/"+repo+"/commits?page=1&per_page=1000")
-        if comRes.status_code != 200:
-            return ("Issue finding commits for the following repository: "+repo)
-        else:
-            comRes = comRes.json()
-            output+=("Repo: "+repo+", Number of commits: "+str(len(comRes))+"\n")
+        comRes = comRes.json()
+        output+=("Repo: "+repo+", Number of commits: "+str(len(comRes))+"\n")
+    return output
 
 if __name__ == '__main__':
     username = input("Please enter a Github username: ")
