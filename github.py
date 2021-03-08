@@ -1,11 +1,9 @@
 import requests as r
 import json
 
-def main():
-    username = input("Please enter a GitHub username: ")
+def findGithubInfo(username):
     ret = r.get("https://api.github.com/users/"+username+"/repos")
     if not ret.ok:
-        print(ret.ok)
         print("Invalid username entered. Please re-run the program and try again.")
         return
     ret=ret.json()
@@ -21,4 +19,6 @@ def main():
             comRes = comRes.json()
             print("Repo: "+repo+", Number of commits: "+str(len(comRes)))
 
-main()
+if __name__ == '__main__':
+    username = input("Please enter a Github username: ")
+    findGithubInfo(username)

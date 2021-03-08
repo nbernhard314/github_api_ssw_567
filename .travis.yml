@@ -5,4 +5,4 @@ install:
   - pip install requests
 # command to run tests
 script:
-  - python3 main.py
+  - python3 -m unittest TestGithubAPI
