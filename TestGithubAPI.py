@@ -3,8 +3,8 @@ from github import findGithubInfo
 
 
 class TestGithubAPI(unittest.TestCase):
-    def testValidUsername(self): 
-        self.assertEqual(findGithubInfo("nbernhard314"))
+    def testInvalidUsername(self): 
+        self.assertEqual(findGithubInfo("jfkdjshfksjdhfkjsdfjsdhfkjsh"), "Invalid username entered. Please re-run the program and try again.")
 
 
 if __name__ == '__main__':
