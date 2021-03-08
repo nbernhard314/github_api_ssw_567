@@ -6,7 +6,7 @@ class TestGithubAPI(unittest.TestCase):
     def testInvalidUsername(self): 
         self.assertEqual(findGithubInfo("jfkdjshfksjdhfkjsdfjsdhfkjsh"), "Invalid username entered. Please re-run the program and try again.")
     def testValidUsername(self):
-        self.assertEqual(findGithubInfo("nbernhard314"), "Repo: covidhack, Number of commits: 2\nRepo: cs554, Number of commits: 4\nRepo: cs555, Number of commits: 78\nRepo: github_api_ssw_567, Number of commits: 6\nRepo: ssw567, Number of commits: 4\nRepo: ssw567_hw_01, Number of commits: 7\nRepo: ssw567_hw_02, Number of commits: 10\nRepo: webProgrammingFinal, Number of commits: 57\n")
+        self.assertTrue(findGithubInfo("nbernhard314").__contains__("Repo: covidhack, Number of commits: 2\nRepo: cs554, Number of commits: 4\nRepo: cs555, Number of commits: 78\n"))
     def testBoolInput(self):
         self.assertEqual(findGithubInfo(False), "Invalid input. Please enter a string.")
     def testIntInput(self):
